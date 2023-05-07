@@ -1,5 +1,6 @@
 import * as fs from 'node:fs';
 
+
 let DAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 
 let dataRead = (err, data) => {
@@ -12,10 +13,19 @@ let dataRead = (err, data) => {
   console.log(formatDate(dates));
 }
 
+
 fs.readFile('data.json', 'utf8', dataRead);
 
 let formatDate = (data) => {
-  for(const place of data){
+  for(var attributename in data){
+    for(var key in data) {
+       for (var key1 in data[key]) {
+           console.log(data[key][key1])
+       }
+    }
+  }
+
+/*  for(const place of data){
     for(const item of place.events){
       let currentDate=item.date.split("-")
       let newDate={
@@ -26,6 +36,7 @@ let formatDate = (data) => {
         item.date=newDate;
     }
   }
+  */
 }
 
 
